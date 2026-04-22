@@ -773,15 +773,14 @@ facade.icon_names()""", language="python")
         st.markdown("### Changelog")
         st.markdown("All notable changes to streamlit-facade.")
         facade.Separator()
-        with facade.Accordion("v0.1.3 - Latest", icon="check"):
+        with facade.Accordion("v0.1.3 - Latest", expanded=True, icon="check"):
             facade.Badge("Latest", variant="success")
             st.markdown("""
         **Fixed**
         - Select component label collapsing — label now renders correctly when provided
             """)
             
-        with facade.Accordion("v0.1.2", expanded=True, icon="check"):
-            facade.Badge("Latest", variant="success")
+        with facade.Accordion("v0.1.2", icon="check"):
             st.markdown("""
 **New**
 - `facade.IconCard` — card with a leading Lucide icon above the title. Accepts `icon`, `icon_size`, `title`, `description`.
