@@ -773,8 +773,14 @@ facade.icon_names()""", language="python")
         st.markdown("### Changelog")
         st.markdown("All notable changes to streamlit-facade.")
         facade.Separator()
-
-        with facade.Accordion("v0.1.2 — Latest", expanded=True, icon="check"):
+        with facade.Accordion("v0.1.3 - Latest", icon="check"):
+            facade.Badge("Latest", variant="success")
+            st.markdown("""
+        **Fixed**
+        - Select component label collapsing — label now renders correctly when provided
+            """)
+            
+        with facade.Accordion("v0.1.2", expanded=True, icon="check"):
             facade.Badge("Latest", variant="success")
             st.markdown("""
 **New**
@@ -809,12 +815,6 @@ facade.icon_names()""", language="python")
 **Icons**
 - 76 named icons in unified registry
 - `facade.icon_names()` to list all available names
-            """)
-        with facade.Accordion("v0.1.3", icon="check"):
-            facade.Badge("Latest", variant="success")
-            st.markdown("""
-        **Fixed**
-        - Select component label collapsing — label now renders correctly when provided
             """)
     # ════════════════════════════════════════════════════════
     #  LLM CONTEXT
