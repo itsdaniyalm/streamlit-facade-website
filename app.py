@@ -810,7 +810,12 @@ facade.icon_names()""", language="python")
 - 76 named icons in unified registry
 - `facade.icon_names()` to list all available names
             """)
-
+        with facade.Accordion("v0.1.3", icon="check"):
+            facade.Badge("Latest", variant="success")
+            st.markdown("""
+        **Fixed**
+        - Select component label collapsing — label now renders correctly when provided
+            """)
     # ════════════════════════════════════════════════════════
     #  LLM CONTEXT
     # ════════════════════════════════════════════════════════
