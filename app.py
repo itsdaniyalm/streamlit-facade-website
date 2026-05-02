@@ -803,6 +803,24 @@ facade.icon_names()""", language="python")
     # ════════════════════════════════════════════════════════
     #  CHANGELOG
     # ════════════════════════════════════════════════════════
+    with facade.Accordion("v0.1.5 — Latest", expanded=True, icon="check"):
+            facade.Badge("Latest", variant="success")
+            st.markdown("""
+**Fixed**
+- All component surfaces (`Card`, `IconCard`, `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `DatePicker`, `Accordion`) now correctly use `--muted` token instead of `--background` — enables proper visual hierarchy when page and component backgrounds differ
+- `StyledContainer` default background changed from `--background` to `--muted`
+
+**Improved**
+- `Button` padding reduced across all sizes for a tighter, more refined look
+- `Button` forced `min-width` removed — icon-only buttons are now compact
+            """)
+        with facade.Accordion("v0.1.4", icon="check"):
+            facade.Badge("v0.1.4", variant="muted")
+            st.markdown("""
+**New**
+- `facade.StyledContainer` — styled `st.container()` wrapper with configurable accent borders (`top`, `bottom`, `left`, `right`, `all`, `none`), border color, border width, surround border color, background, and radius. `key` is required for CSS scoping.
+            """)
+            
     with tab_changelog:
         st.markdown("### Changelog")
         st.markdown("All notable changes to streamlit-facade.")
