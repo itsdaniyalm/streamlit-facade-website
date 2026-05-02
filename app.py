@@ -804,13 +804,6 @@ facade.icon_names()""", language="python")
     #  CHANGELOG
     # ════════════════════════════════════════════════════════
 
-     with facade.Accordion("v0.1.4", icon="check"):
-            facade.Badge("v0.1.4", variant="muted")
-            st.markdown("""
-**New**
-- `facade.StyledContainer` — styled `st.container()` wrapper with configurable accent borders (`top`, `bottom`, `left`, `right`, `all`, `none`), border color, border width, surround border color, background, and radius. `key` is required for CSS scoping.
-            """)
-            
     with tab_changelog:
         st.markdown("### Changelog")
         st.markdown("All notable changes to streamlit-facade.")
