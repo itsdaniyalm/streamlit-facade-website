@@ -15,12 +15,6 @@ facade.theme.apply(
     font_link="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700",
     radius="xl",   
 )
-# st.markdown("""
-# <style>
-#     .stMainBlockContainer { padding-top: 1.5rem !important; }
-#     header[data-testid="stHeader"] { display: none !important; }
-# </style>
-# """, unsafe_allow_html=True)
 
 # Session Stage
 if "page" not in st.session_state:
@@ -264,12 +258,12 @@ facade.Card(title="facade", description="streamlit but different")
         (
             ctab_button, ctab_linkbutton, ctab_input, ctab_select, ctab_textarea,
             ctab_checkbox, ctab_radio, ctab_toggle, ctab_slider, ctab_datepicker,
-            ctab_card, ctab_iconcard, ctab_alert, ctab_badge, ctab_metric,
+            ctab_card, ctab_iconcard, ctab_styledcontainer, ctab_alert, ctab_badge, ctab_metric,
             ctab_progress, ctab_spinner, ctab_toast, ctab_tabs, ctab_accordion
         ) = facade.Tabs([
             "Button", "LinkButton", "Input", "Select", "Textarea",
             "Checkbox", "Radio", "Toggle", "Slider", "DatePicker",
-            "Card", "IconCard", "Alert", "Badge", "Metric",
+            "Card", "IconCard", "StyledContainer", "Alert", "Badge", "Metric",
             "Progress", "Spinner", "Toast", "Tabs", "Accordion"
         ])
 
@@ -496,6 +490,46 @@ facade.Card(title="Title only")""", language="python")
     icon="terminal",       # facade icon name
     icon_size=24,          # optional, default 24
 )""", language="python")
+
+        with ctab_styledcontainer:
+            st.markdown("#### StyledContainer")
+            st.markdown("A styled `st.container()` wrapper with configurable borders, background, and radius. Use it to group any Streamlit components inside a visually distinct card.")
+            prev_col, code_col = st.columns([1, 1], gap="large")
+            with prev_col:
+                with st.container(border=True):
+                    with facade.StyledContainer(border="top", border_color="#e05252", border_width="3px", key="doc_sc1"):
+                        facade.Badge("Critical", variant="error")
+                        st.markdown("### $43.8M")
+                        st.caption("493 patients")
+                    with facade.StyledContainer(border="left", border_color="var(--primary)", border_width="4px", key="doc_sc2"):
+                        facade.Badge("Info", variant="muted")
+                        st.markdown("**Left accent border**")
+                    with facade.StyledContainer(border="all", key="doc_sc3"):
+                        st.markdown("**All sides — default border**")
+            with code_col:
+                st.code("""# Top accent border
+with facade.StyledContainer(
+    border="top",
+    border_color="#e05252",
+    border_width="3px",
+    key="card1",
+):
+    facade.Badge("Critical", variant="error")
+    st.markdown("### $43.8M")
+    st.caption("493 patients")
+
+# Left accent border
+with facade.StyledContainer(
+    border="left",
+    border_color="var(--primary)",
+    border_width="4px",
+    key="card2",
+):
+    st.markdown("Left accent")
+
+# border: "top" | "bottom" | "left" | "right" | "all" | "none"
+# border_surround_color sets the other 3 sides (default: var(--border))
+# key is required for CSS scoping""", language="python")
 
         with ctab_alert:
             st.markdown("#### Alert")
@@ -773,14 +807,23 @@ facade.icon_names()""", language="python")
         st.markdown("### Changelog")
         st.markdown("All notable changes to streamlit-facade.")
         facade.Separator()
-        with facade.Accordion("v0.1.3 - Latest", expanded=True, icon="check"):
+
+        with facade.Accordion("v0.1.4 — Latest", expanded=True, icon="check"):
             facade.Badge("Latest", variant="success")
             st.markdown("""
-        **Fixed**
-        - Select component label collapsing — label now renders correctly when provided
+**New**
+- `facade.StyledContainer` — styled `st.container()` wrapper with configurable accent borders (`top`, `bottom`, `left`, `right`, `all`, `none`), border color, border width, surround border color, background, and radius. `key` is required for CSS scoping.
             """)
-            
+
+        with facade.Accordion("v0.1.3", icon="check"):
+            facade.Badge("v0.1.3", variant="muted")
+            st.markdown("""
+**Fixed**
+- Select component label collapsing — label now renders correctly when provided
+            """)
+
         with facade.Accordion("v0.1.2", icon="check"):
+            facade.Badge("v0.1.2", variant="muted")
             st.markdown("""
 **New**
 - `facade.IconCard` — card with a leading Lucide icon above the title. Accepts `icon`, `icon_size`, `title`, `description`.
@@ -815,6 +858,7 @@ facade.icon_names()""", language="python")
 - 76 named icons in unified registry
 - `facade.icon_names()` to list all available names
             """)
+
     # ════════════════════════════════════════════════════════
     #  LLM CONTEXT
     # ════════════════════════════════════════════════════════
