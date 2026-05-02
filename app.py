@@ -819,7 +819,7 @@ facade.icon_names()""", language="python")
         - `Button` padding reduced across all sizes for a tighter, more refined look
         - `Button` forced `min-width` removed — icon-only buttons are now compact
                     """)
-        with facade.Accordion("v0.1.4", expanded=True, icon="check"):
+        with facade.Accordion("v0.1.4", icon="check"):
             facade.Badge("v0.1.4", variant="muted")
             st.markdown("""
 **New**
